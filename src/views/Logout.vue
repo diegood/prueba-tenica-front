@@ -3,25 +3,33 @@
     <Card>
       <h1>¿Estás seguro de cerrar sesión?</h1>
       <div class="buttons-group">
-        <Btn>Si</Btn>
-        <Btn>No</Btn>
+        <Btn @click="logout()">Si</Btn>
+        <Btn @click="goToUsers()">No</Btn>
       </div>
     </Card>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import Card from "@/components/common/Card.vue";
-import Btn from "@/components/common/Btn.vue";
+import { defineComponent } from 'vue'
+import { useStore } from 'vuex'
+import router from '@/router'
+import Card from '@/components/common/Card.vue'
+import Btn from '@/components/common/Btn.vue'
 
 export default defineComponent({
-  name: "Logout",
+  name: 'Logout',
   components: { Card, Btn },
   setup() {
-    return {};
+    const store = useStore()
+    const logout = () => {
+      store.dispatch('logout')
+      router.push({ name: 'login' })
+    }
+    const goToUsers = () => router.push({ name: 'users' })
+    return { logout, goToUsers }
   },
-});
+})
 </script>
 
 <style lang="stylus" scoped>

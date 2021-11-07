@@ -33,7 +33,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/mixins/custom.vmodel.mixin.ts"  ],
   "exclude": [
     "node_modules"
   ]

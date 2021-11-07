@@ -1,6 +1,26 @@
 <template>
-  <router-view />
+  <main>
+    <nav-bar v-if="showNavBar" />
+    <router-view />
+  </main>
 </template>
+<script>
+import NavBar from '@/components/NavBar.vue'
+import { useStore } from 'vuex'
+export default {
+  components: {
+    NavBar,
+  },
+  created() {
+    useStore().dispatch('fetchAuhtenticationStatus')
+  },
+  computed: {
+    showNavBar() {
+      return useStore().state.authentication.userLogged
+    },
+  },
+}
+</script>
 
 <style lang="stylus">
 #app
@@ -42,4 +62,24 @@ h1
   font-weight: bold
   font-size: 23px
   height: 1em
+
+.input
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+
+
+.input:focus
+  border 2px solid rgba(0, 0, 0, 0.18) !important
 </style>

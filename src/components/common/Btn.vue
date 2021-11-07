@@ -5,8 +5,8 @@
 </template>
 <script>
 export default {
-  name: "Btn",
-};
+  name: 'Btn',
+}
 </script>
 <style lang="stylus" scoped>
 button
@@ -20,7 +20,10 @@ button
   font-size: 13px
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04)
   transition: background-color 0.5s ease
-
-button:hover
-  background-color: #9C27B0
+  &:hover
+    background-color: #9C27B0
+  &:disabled
+    cursor: not-allowed
+    background-color: #E0E0E0
+    color: #000
 </style>
